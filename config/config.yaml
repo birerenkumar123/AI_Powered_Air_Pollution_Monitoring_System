@@ -1,0 +1,76 @@
+# Gringotts AI Trading - Configuration
+project_name: gringotts-ai-trading
+version: 1.0.0
+
+# Data Configuration
+data:
+  raw_path: './data/raw'
+  processed_path: './data/processed'
+  external_path: './data/external'
+  
+# Stock Data Configuration
+stock:
+  symbols:
+    - 'AAPL'
+    - 'MSFT'
+    - 'GOOGL'
+    - 'RELIANCE.NS'
+  start_date: '2022-01-01'
+  end_date: '2024-12-31'
+  interval: '1d'  # daily
+  
+# Feature Engineering Configuration
+features:
+  indicators:
+    - 'SMA'  # Simple Moving Average
+    - 'EMA'  # Exponential Moving Average
+    - 'RSI'  # Relative Strength Index
+    - 'MACD' # Moving Average Convergence Divergence
+    - 'BOLLINGER' # Bollinger Bands
+  
+  sma_windows: [20, 50, 200]
+  ema_windows: [12, 26]
+  rsi_period: 14
+  bollinger_period: 20
+  
+# Model Configuration
+model:
+  type: 'xgboost'  # options: 'xgboost', 'lightgbm', 'sklearn'
+  test_size: 0.2
+  random_state: 42
+  
+  xgboost:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    
+  lightgbm:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    
+# Strategy Configuration
+strategy:
+  buy_threshold: 0.55
+  sell_threshold: 0.45
+  position_size: 0.1  # 10% of portfolio
+  
+# Risk Management
+risk:
+  stop_loss_pct: 0.05  # 5% stop loss
+  take_profit_pct: 0.10  # 10% take profit
+  max_drawdown_pct: 0.20  # Max 20% drawdown
+  max_positions: 5
+  
+# Backtesting Configuration
+backtesting:
+  initial_cash: 100000
+  commission: 0.001  # 0.1% commission
+  slippage: 0.0001  # 0.01% slippage
+  
+# Model Paths
+paths:
+  model_dir: './models/saved_models'
+  report_dir: './reports'
+  figures_dir: './reports/figures'
