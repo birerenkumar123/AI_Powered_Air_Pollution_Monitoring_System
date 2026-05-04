@@ -1,4 +1,5 @@
 # Gringotts AI Trading 🏦
+create by Biren Kumar Nayak
 
 An intelligent stock trading system powered by machine learning and advanced risk management. Built with Python, scikit-learn, XGBoost, and Streamlit.
 
